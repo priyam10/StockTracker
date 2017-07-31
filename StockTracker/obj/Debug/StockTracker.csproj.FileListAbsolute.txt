@@ -1,0 +1,15 @@
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\StockTracker.exe.config
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\StockTracker.exe
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\StockTracker.pdb
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\obj\Debug\StockTracker.csprojResolveAssemblyReference.cache
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\obj\Debug\View\LoginView.g.cs
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\obj\Debug\App.g.cs
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\obj\Debug\StockTracker_MarkupCompile.cache
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\obj\Debug\StockTracker_MarkupCompile.lref
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\obj\Debug\View\LoginView.baml
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\obj\Debug\StockTracker.g.resources
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\obj\Debug\StockTracker.Properties.Resources.resources
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\obj\Debug\StockTracker.csproj.GenerateResource.Cache
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\obj\Debug\StockTracker.exe
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\obj\Debug\StockTracker.pdb
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\obj\Debug\App.baml
