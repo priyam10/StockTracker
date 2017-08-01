@@ -13,3 +13,11 @@ C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\
 C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\obj\Debug\StockTracker.exe
 C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\obj\Debug\StockTracker.pdb
 C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\obj\Debug\App.baml
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\LiveCharts.dll
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\LiveCharts.pdb
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\LiveCharts.xml
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\Newtonsoft.Json.xml

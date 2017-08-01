@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using StockTracker.Services;
 
 namespace StockTracker.View
 {
@@ -22,6 +23,8 @@ namespace StockTracker.View
         public LoginView()
         {
             InitializeComponent();
+            //StockAPI stock = new StockAPI();
+            //stock.GetCurrentPrice();
         }
     }
 }
