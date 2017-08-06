@@ -68,6 +68,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\Stock.cs" />
+    <Compile Include="Model\StockPrice.cs" />
     <Compile Include="Services\StockAPI.cs" />
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -76,6 +77,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resources\Dictionaries\ButtonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -114,6 +119,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\menu_btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\down_arrow.png" />
+    <Resource Include="Resources\Images\search.png" />
+    <Resource Include="Resources\Images\up_arrow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using StockTracker.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,36 +15,56 @@ namespace StockTracker.Services
     // API Key: I6L2EI9FXS12JRHU
     class StockAPI
     {
-        private string url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=1min&apikey=I6L2EI9FXS12JRHU";        
+        private string url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=TSLA&interval=5min&apikey=I6L2EI9FXS12JRHU";        
 
         public StockAPI()
         {
-
+            //Stock stockData = GetTodayPrices();
+            //if(stockData != null)
+            //{
+                
+            //}
         }
 
-        public void GetCurrentPrice()
+        public Stock GetTodayPrices()
         {
             // Create a web client.
-            using (WebClient client = new WebClient())
+            Stock stock = null;
+            WebClient webClient = new WebClient();
+            var data = webClient.DownloadString(url);            
+
+            JObject objects = JObject.Parse(data);
+            foreach(KeyValuePair<string, JToken> kvp in objects)
             {
-                // Get the response string from the URL.
-                string xml = client.DownloadString(url);
-
-                // Load the response into an XML document.
-                XmlDocument xml_document = new XmlDocument();
-                xml_document.LoadXml(xml);
-
-                // Format the XML.
-                using (StringWriter string_writer = new StringWriter())
+                //Console.WriteLine("Key: " + kvp.Key + " Value: "+ kvp.Value.ToString());
+                JToken token = kvp.Value;
+                stock = new Stock();
+                if (kvp.Key.Equals("Meta Data"))
                 {
-                    XmlTextWriter xml_text_writer = new XmlTextWriter(string_writer);
-                    xml_text_writer.Formatting = Formatting.Indented;
-                    xml_document.WriteTo(xml_text_writer);
+                    stock.Symbol = token["2. Symbol"].ToString();
+                   // Console.WriteLine("Symbol: "+ token["2. Symbol"]);
 
-                    // Return the result.
-                    string xml_string = string_writer.ToString();
+                }
+                else
+                {
+                    var stockTimes = token.Children();
+                    stock.StockPrices = new List<StockPrice>();
+                    foreach (JToken time in stockTimes)
+                    {
+                        
+                            var property = time as JProperty;
+
+                            if (property != null)
+                            {
+                                //Console.WriteLine("DateTime: " + property.Name + " Open: " + property.Value["1. open"]);
+                                DateTime dt = DateTime.ParseExact(property.Name, "yyyy-MM-dd HH:mm:ss", null);
+                                stock.StockPrices.Add(new StockPrice(dt, Double.Parse(property.Value["1. open"].ToString())));
+                            }
+                    }
                 }
             }
+
+            return stock;
         }
     }
 }

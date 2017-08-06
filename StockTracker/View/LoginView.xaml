@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:StockTracker.View"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"       
-        Title="LoginView" Width="1020" Height="700" Background="Transparent" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
-    <Window.Resources>
+        Title="LoginView" Width="1020" Height="720" Background="Transparent" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+    <!--<Window.Resources>
         <Style TargetType="lvc:LineSeries">
             <Setter Property="StrokeThickness" Value="3"></Setter>
             <Setter Property="Stroke" Value="White"></Setter>
@@ -16,10 +16,10 @@
             <Setter Property="LineSmoothness" Value="0"></Setter>
         </Style>
         <Style TargetType="lvc:Axis">
-            <Setter Property="ShowLabels" Value="False"></Setter>
-            <Setter Property="IsEnabled" Value="False"></Setter>
+            <Setter Property="ShowLabels" Value="True"></Setter>
+            <Setter Property="IsEnabled" Value="True"></Setter>
         </Style>
-    </Window.Resources>
+    </Window.Resources>-->
     <Border BorderBrush="Transparent"
              BorderThickness="1.5"
              CornerRadius="10"
@@ -31,33 +31,113 @@
                     <Image Source="/Resources/Images/menu_btn.png" />
                 </Button>
                 <TextBlock Foreground="#FFF2053F" VerticalAlignment="Center" FontSize="24" FontFamily="Roboto" Margin="10">StockTracker</TextBlock>
-                <TextBox Width="370" Height="44" Margin="10" Background="#FF3A3A56" Foreground="Silver" BorderThickness="0" VerticalContentAlignment="Center"></TextBox>
+                <TextBox Width="370" Height="44" Margin="10" Background="#FF3A3A56" Foreground="Silver" Padding="10" FontFamily="Roboto Light"  FontSize="18" BorderThickness="0" VerticalContentAlignment="Center"></TextBox>
+                <Button Background="Transparent" BorderThickness="0" Width="32" Height="44" Margin="10">
+                    <Image Source="/Resources/Images/search.png"></Image>
+                </Button>
+
             </StackPanel>
-            
+
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"></ColumnDefinition>
-                    <ColumnDefinition Width="3*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Border Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="1">
-                    
-                </Border>
-                <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-                </Border>
-                <Border Grid.Row="2" Grid.Column="0" BorderBrush="Black" BorderThickness="1">
+                <!-- Portfolio details -->
+                <Border Grid.Row="0" Grid.Column="0" BorderBrush="#FF30305A" BorderThickness="1" CornerRadius="10" Margin="20" Padding="10">
+                    <StackPanel>
+                        <DockPanel>
+                            <Rectangle Fill="#FFAC0589" Height="20" Width="20" Stroke="Black" HorizontalAlignment="Left" Margin="0 0 15 0" />
+                            <TextBlock Foreground="LightBlue" VerticalAlignment="Center" FontSize="24" FontFamily="Roboto Light">Balance</TextBlock>
+                            <TextBlock Foreground="Gray" VerticalAlignment="Center" FontSize="18" FontFamily="Roboto Light" HorizontalAlignment="Right">August 2, 2017</TextBlock>
+                        </DockPanel>
 
+                        <DockPanel>
+                            <TextBlock x:Name="txt_balance" FontFamily="Comic Sans MS" FontSize="32" Foreground="#FFE0E0E0" Margin="10">$4,369.00</TextBlock>
+                            <DockPanel HorizontalAlignment="Right">
+                                <Image HorizontalAlignment="Right" Source="/Resources/Images/up_arrow.png" Width="40" Height="30" Margin="10 0"></Image>
+                                <TextBlock HorizontalAlignment="Right" Foreground="LightBlue" FontSize="22" FontFamily="Roboto Light" VerticalAlignment="Center">+319</TextBlock>
+                            </DockPanel>
+
+                        </DockPanel>
+
+
+                    </StackPanel>
                 </Border>
+
+                <!-- Stocks Invested In -->
+                <Border Grid.Row="1" Grid.Column="0" BorderBrush="#FF30305A" BorderThickness="1" CornerRadius="10" Margin="20 10 20 20" Padding="10" Background="#FF09092C">
+                    <StackPanel>
+                        <DockPanel>
+                            <Rectangle Fill="#FFF2053F" Height="20" Width="20" Stroke="Black" HorizontalAlignment="Left" Margin="0 0 15 0" />
+                            <TextBlock Foreground="LightBlue" VerticalAlignment="Center" FontSize="24" FontFamily="Roboto">Stock Picks</TextBlock>
+                        </DockPanel>
+
+
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="2" Grid.Column="0" BorderBrush="#FF30305A" BorderThickness="1" CornerRadius="10" Margin="20 10 20 20" Padding="10">
+                    <StackPanel>
+
+                    </StackPanel>
+                </Border>
+
+                <!-- Graph area -->
                 <StackPanel Grid.RowSpan="2" Grid.Column="1">
-                    <lvc:CartesianChart Name="TimePowerChart" Grid.Row="2" Margin="10, 0, 10, 20"  Hoverable="False" DataTooltip="{x:Null}" Height="419">
-                        
+                    <lvc:CartesianChart Height="396" Margin="0,0,20,0">
+                        <lvc:CartesianChart.Series>
+                            <lvc:LineSeries Values="{Binding Values}" StrokeThickness="2" Fill="Transparent" LineSmoothness="0" PointGeometry="{x:Null}"
+                               PointForeground="#222E31">
+                                <lvc:LineSeries.Stroke>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF600A74" Offset="0.474"/>
+                                        <GradientStop Color="#FFF31616"/>
+                                        <GradientStop Color="#FFF31616" Offset="0.965"/>
+                                    </LinearGradientBrush>
+                                </lvc:LineSeries.Stroke>
+                            </lvc:LineSeries>
+                        </lvc:CartesianChart.Series>
+                        <lvc:CartesianChart.DataTooltip>
+                            <lvc:DefaultTooltip SelectionMode="OnlySender" ShowSeries="False" />
+                        </lvc:CartesianChart.DataTooltip>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Labels="{Binding Labels}" FontSize="16" FontFamily="Roboto Light" Foreground="LightBlue" BarUnit="{Binding Labels}">
+                                <lvc:Axis.Separator>
+                                    <lvc:Separator StrokeThickness="0" />
+                                </lvc:Axis.Separator>
+                            </lvc:Axis>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis LabelFormatter="{Binding YFormatter}" FontSize="16" FontFamily="Roboto Light" Foreground="LightBlue">
+                                <lvc:Axis.Separator>
+                                    <lvc:Separator StrokeThickness="1" StrokeDashArray="2">
+                                        <lvc:Separator.Stroke>
+                                            <SolidColorBrush Color="#FF0A326C" />
+                                        </lvc:Separator.Stroke>
+                                    </lvc:Separator>
+                                </lvc:Axis.Separator>
+                            </lvc:Axis>
+                        </lvc:CartesianChart.AxisY>
                     </lvc:CartesianChart>
+                    <StackPanel Orientation="Horizontal" Margin="20 10 0 0">
+                        <Button Template="{StaticResource RoundedButtonTemplate}" Width="70" Height="30" Foreground="LightBlue" Background="#FF09092C">1 day</Button>
+                        <Button Template="{StaticResource RoundedButtonTemplate}" Width="70" Height="30" Foreground="LightBlue" Background="#FF09092C">5 day</Button>
+                        <Button Template="{StaticResource RoundedButtonTemplate}" Width="70" Height="30" Foreground="LightBlue" Background="#FF09092C">1 month</Button>
+                        <Button Template="{StaticResource RoundedButtonTemplate}" Width="70" Height="30" Foreground="LightBlue" Background="#FF09092C">3 month</Button>
+                        <Button Template="{StaticResource RoundedButtonTemplate}" Width="70" Height="30" Foreground="LightBlue" Background="#FF09092C">1 year</Button>
+                        <Button Template="{StaticResource RoundedButtonTemplate}" Width="70" Height="30" Foreground="LightBlue" Background="#FF09092C">5 year</Button>
+                    </StackPanel>
+
+
                 </StackPanel>
+
             </Grid>
         </DockPanel>
 
