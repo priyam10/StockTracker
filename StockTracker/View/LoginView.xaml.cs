@@ -17,6 +17,7 @@ using LiveCharts.Wpf;
 using LiveCharts.Defaults;
 using System.ComponentModel;
 using StockTracker.Model;
+using LiveCharts.Configurations;
 
 namespace StockTracker.View
 {
@@ -30,30 +31,20 @@ namespace StockTracker.View
         {
             InitializeComponent();
 
-            // Set X-axis labels & Y-axis labels
-            //YFormatter = value => value.ToString("C");
-
             StockAPI api = new StockAPI();
             Stock stockData = api.GetTodayPrices();
             if (stockData != null)
             {
                 stockData.StockPrices.Reverse();
+                // Set X-axis & Y-axis data/labels
                 Values = new ChartValues<double>(stockData.StockPrices.Select(x => x.Open));
-                //Labels = stockData.StockPrices.Select(x => x.Time.TimeOfDay.ToString()).ToList();
-                //Labels = new List<string>();
-                //for(int i = 0; i < stockData.StockPrices.Count; i += 20)
-                //{
-                //    Labels.Add(stockData.StockPrices[i].Time.TimeOfDay.ToString());
-                //}
-                    //new[] { "9:30 AM", "10:00 AM", "10:30 AM" , "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM"};//stockData.StockPrices.Select(x => x.Time).ToList();
+                Labels = stockData.StockPrices.Select(x => x.Time.ToString("hh:mm tt")).ToList();
             }
 
             DataContext = this;
         }
 
-        public SeriesCollection SeriesCollection { get; set; }
         public ChartValues<double> Values { get; set; }
         public List<string> Labels { get; set; }
-        public Func<double, string> YFormatter { get; set; }
     }
 }
