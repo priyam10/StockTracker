@@ -15,7 +15,7 @@ namespace StockTracker.Services
     // API Key: I6L2EI9FXS12JRHU
     class StockAPI
     {
-        private string url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=TSLA&interval=5min&apikey=I6L2EI9FXS12JRHU";        
+        private string url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={0}&interval={1}&apikey=I6L2EI9FXS12JRHU";        
 
         public StockAPI()
         {
@@ -26,12 +26,13 @@ namespace StockTracker.Services
             //}
         }
 
-        public Stock GetTodayPrices()
+        public Stock GetTodayPrices(string symbol)
         {
             // Create a web client.
             Stock stock = null;
             WebClient webClient = new WebClient();
-            var data = webClient.DownloadString(url);            
+            //string temp_url = url.Replace("{0}", symbol);
+            var data = webClient.DownloadString(url.Replace("{0}", symbol));            
 
             JObject objects = JObject.Parse(data);
             foreach(KeyValuePair<string, JToken> kvp in objects)

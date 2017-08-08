@@ -18,6 +18,7 @@ using LiveCharts.Defaults;
 using System.ComponentModel;
 using StockTracker.Model;
 using LiveCharts.Configurations;
+using StockTracker.ViewModel;
 
 namespace StockTracker.View
 {
@@ -31,20 +32,21 @@ namespace StockTracker.View
         {
             InitializeComponent();
 
-            StockAPI api = new StockAPI();
-            Stock stockData = api.GetTodayPrices();
-            if (stockData != null)
-            {
-                stockData.StockPrices.Reverse();
-                // Set X-axis & Y-axis data/labels
-                Values = new ChartValues<double>(stockData.StockPrices.Select(x => x.Open));
-                Labels = stockData.StockPrices.Select(x => x.Time.ToString("hh:mm tt")).ToList();
-            }
+            DataContext = new StockTrackerViewModel();
+            //StockAPI api = new StockAPI();
+            //Stock stockData = api.GetTodayPrices();
+            //if (stockData != null)
+            //{
+            //    stockData.StockPrices.Reverse();
+            //    // Set X-axis & Y-axis data/labels
+            //    Values = new ChartValues<double>(stockData.StockPrices.Select(x => x.Open));
+            //    Labels = stockData.StockPrices.Select(x => x.Time.ToString("hh:mm tt")).ToList();
+            //}
 
-            DataContext = this;
+            //DataContext = this;
         }
 
-        public ChartValues<double> Values { get; set; }
-        public List<string> Labels { get; set; }
+        //public ChartValues<double> Values { get; set; }
+        //public List<string> Labels { get; set; }
     }
 }
