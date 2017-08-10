@@ -49,6 +49,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -68,6 +69,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Model\Portfolio.cs" />
     <Compile Include="Model\Stock.cs" />
     <Compile Include="Model\StockPrice.cs" />
     <Compile Include="Services\StockAPI.cs" />
@@ -116,7 +118,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\close.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\menu_btn.png" />
   </ItemGroup>
@@ -124,6 +128,12 @@
     <Resource Include="Resources\Images\down_arrow.png" />
     <Resource Include="Resources\Images\search.png" />
     <Resource Include="Resources\Images\up_arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\notify.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

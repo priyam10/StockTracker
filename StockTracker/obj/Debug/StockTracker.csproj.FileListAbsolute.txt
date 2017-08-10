@@ -22,3 +22,14 @@ C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\
 C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\LiveCharts.Wpf.xml
 C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\Newtonsoft.Json.xml
 C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\obj\Debug\Resources\Dictionaries\ButtonStyles.baml
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\de\System.Windows.Interactivity.resources.dll
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\en\System.Windows.Interactivity.resources.dll
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\es\System.Windows.Interactivity.resources.dll
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\it\System.Windows.Interactivity.resources.dll
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\Users\ppatel\Documents\Visual Studio 2015\Projects\StockTracker\StockTracker\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll

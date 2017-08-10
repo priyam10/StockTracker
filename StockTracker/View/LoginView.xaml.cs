@@ -27,26 +27,38 @@ namespace StockTracker.View
     /// </summary>
     public partial class LoginView : Window
     {
-        
+        StockTrackerViewModel stockTrackerViewModel;
+
         public LoginView()
         {
             InitializeComponent();
-
-            DataContext = new StockTrackerViewModel();
-            //StockAPI api = new StockAPI();
-            //Stock stockData = api.GetTodayPrices();
-            //if (stockData != null)
-            //{
-            //    stockData.StockPrices.Reverse();
-            //    // Set X-axis & Y-axis data/labels
-            //    Values = new ChartValues<double>(stockData.StockPrices.Select(x => x.Open));
-            //    Labels = stockData.StockPrices.Select(x => x.Time.ToString("hh:mm tt")).ToList();
-            //}
-
-            //DataContext = this;
+            stockTrackerViewModel = new StockTrackerViewModel();
+            DataContext = stockTrackerViewModel;
         }
 
-        //public ChartValues<double> Values { get; set; }
-        //public List<string> Labels { get; set; }
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void QueryBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Console.WriteLine("Searching!");
+                stockTrackerViewModel.StockQueryText = stockQueryBox.Text;
+                stockTrackerViewModel.LookupStock("");
+            }
+        }
     }
 }

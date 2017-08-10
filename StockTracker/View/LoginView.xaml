@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StockTracker.View"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-        mc:Ignorable="d"       
-        Title="LoginView" Width="1020" Height="720" Background="Transparent" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        mc:Ignorable="d"     
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Title="LoginView" Width="1020" Height="720" Background="Transparent" WindowStyle="None" WindowState="{Binding CurrWindowState}" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseLeftButtonDown">
+            <i:InvokeCommandAction Command="{Binding MoveWindowCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <!--<Window.Resources>
         <Style TargetType="lvc:LineSeries">
             <Setter Property="StrokeThickness" Value="3"></Setter>
@@ -26,17 +35,44 @@
              Background="#FF0E103E">
 
         <DockPanel LastChildFill="True">
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#FF09092C" Height="66">
-                <Button Background="Transparent" BorderThickness="0" Width="32" Height="44" Margin="10">
-                    <Image Source="/Resources/Images/menu_btn.png" />
-                </Button>
-                <TextBlock Foreground="#FFF2053F" VerticalAlignment="Center" FontSize="24" FontFamily="Roboto" Margin="10">StockTracker</TextBlock>
-                <TextBox Width="370" Height="44" Margin="10" Background="#FF3A3A56" Foreground="Silver" Padding="10" FontFamily="Roboto Light" FontSize="18" BorderThickness="0" VerticalContentAlignment="Center" Text="{Binding StockQueryText}"></TextBox>
-                <Button Background="Transparent" BorderThickness="0" Width="32" Height="44" Margin="10" Command="{Binding SearchStockCommand}">
-                    <Image Source="/Resources/Images/search.png"></Image>
-                </Button>
+            <Grid DockPanel.Dock="Top" Background="#FF09092C">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--<StackPanel Orientation="Horizontal" Background="#FF09092C" Height="66">-->
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                    <Button Background="Transparent" BorderThickness="0" Width="32" Height="44" Margin="10">
+                        <Image Source="/Resources/Images/menu_btn.png" />
+                    </Button>
+                    <TextBlock Foreground="#FFF2053F" VerticalAlignment="Center" FontSize="24" FontFamily="Roboto" Margin="10">StockTracker</TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                    <TextBox x:Name="stockQueryBox" Width="370" Height="44" Margin="10" Background="#FF3A3A56" Foreground="Silver" Padding="10" FontFamily="Roboto Light" FontSize="18" BorderThickness="0" VerticalContentAlignment="Center" Text="{Binding StockQueryText}" KeyDown="QueryBox_KeyDown"></TextBox>
+                    <Button Background="Transparent" BorderThickness="0" Width="32" Height="44" Margin="10" Command="{Binding SearchStockCommand}">
+                        <Image Source="/Resources/Images/search.png"></Image>
+                    </Button>
+                </StackPanel>
 
-            </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
+                    <Button Background="Transparent" BorderThickness="0" Width="40" Height="40" Margin="5 0">
+                        <Image Source="/Resources/Images/notify.png"></Image>
+                    </Button>
+                    <Button Background="Transparent" BorderThickness="0" Width="40" Height="40" Margin="5 0" Click="btnMinimize_Click">
+                        <Image Source="/Resources/Images/minimize.png"></Image>
+                    </Button>
+                    <Button Background="Transparent" BorderThickness="0" Width="40" Height="40" Margin="5 0" Click="btnClose_Click">
+                        <Image Source="/Resources/Images/close.png"></Image>
+                    </Button>
+                </StackPanel>
+                
+
+                <!--</StackPanel>-->
+            </Grid>
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -55,7 +91,7 @@
                         <DockPanel>
                             <Rectangle Fill="#FFAC0589" Height="20" Width="20" Stroke="Black" HorizontalAlignment="Left" Margin="0 0 15 0" />
                             <TextBlock Foreground="LightBlue" VerticalAlignment="Center" FontSize="24" FontFamily="Roboto Light">Balance</TextBlock>
-                            <TextBlock Foreground="Gray" VerticalAlignment="Center" FontSize="18" FontFamily="Roboto Light" HorizontalAlignment="Right">August 2, 2017</TextBlock>
+                            <TextBlock Foreground="Gray" VerticalAlignment="Center" FontSize="18" FontFamily="Roboto Light" HorizontalAlignment="Right" Text="{Binding CurrentDate}">August 2, 2017</TextBlock>
                         </DockPanel>
 
                         <DockPanel>
@@ -64,7 +100,6 @@
                                 <Image HorizontalAlignment="Right" Source="/Resources/Images/up_arrow.png" Width="40" Height="30" Margin="10 0"></Image>
                                 <TextBlock HorizontalAlignment="Right" Foreground="LightBlue" FontSize="22" FontFamily="Roboto Light" VerticalAlignment="Center">+319</TextBlock>
                             </DockPanel>
-
                         </DockPanel>
 
 
@@ -76,7 +111,7 @@
                     <StackPanel>
                         <DockPanel>
                             <Rectangle Fill="#FFF2053F" Height="20" Width="20" Stroke="Black" HorizontalAlignment="Left" Margin="0 0 15 0" />
-                            <TextBlock Foreground="LightBlue" VerticalAlignment="Center" FontSize="24" FontFamily="Roboto">Stock Picks</TextBlock>
+                            <TextBlock Foreground="LightBlue" VerticalAlignment="Center" FontSize="24" FontFamily="Roboto">Positions</TextBlock>
                         </DockPanel>
 
 
@@ -85,6 +120,17 @@
 
                 <Border Grid.Row="2" Grid.Column="0" BorderBrush="#FF30305A" BorderThickness="1" CornerRadius="10" Margin="20 10 20 20" Padding="10">
                     <StackPanel>
+                        <DockPanel>
+                            <Rectangle Fill="#FF390FF5" Height="20" Width="20" Stroke="Black" HorizontalAlignment="Left" Margin="0 0 15 0" />
+                            <TextBlock Foreground="LightBlue" VerticalAlignment="Center" FontSize="24" FontFamily="Roboto">Watchlist</TextBlock>
+                        </DockPanel>
+                        <DockPanel>
+                            <StackPanel>
+                                <Button Style="{StaticResource SquareButtonTemplate}" Foreground="White" FontSize="20" FontFamily="Roboto" BorderBrush="{x:Null}">TSLA</Button>
+                                <Button Style="{StaticResource SquareButtonTemplate}" Foreground="White" FontSize="20" FontFamily="Roboto" BorderBrush="{x:Null}">MSFT</Button>
+                                <Button Style="{StaticResource SquareButtonTemplate}" Foreground="White" FontSize="20" FontFamily="Roboto" BorderBrush="{x:Null}">AAPL</Button>
+                            </StackPanel>
+                        </DockPanel>
 
                     </StackPanel>
                 </Border>
@@ -110,7 +156,7 @@
                         <lvc:CartesianChart.AxisX>
                             <lvc:Axis Labels="{Binding Labels}" FontSize="14" FontFamily="Roboto Light" Foreground="LightBlue" LabelsRotation="-20">
                                 <lvc:Axis.Separator>
-                                    <lvc:Separator StrokeThickness="0.5" Step="10" >
+                                    <lvc:Separator StrokeThickness="0.5" Step="{Binding Step}" >
                                         <lvc:Separator.Stroke>
                                             <SolidColorBrush Color="#FF0A326C" />
                                         </lvc:Separator.Stroke>
@@ -138,9 +184,16 @@
                         <Button Template="{StaticResource RoundedButtonTemplate}" Width="70" Height="30" Foreground="LightBlue" Background="#FF09092C" Command="{Binding SearchStockCommand}" CommandParameter="1 year">1 year</Button>
                         <Button Template="{StaticResource RoundedButtonTemplate}" Width="70" Height="30" Foreground="LightBlue" Background="#FF09092C" Command="{Binding SearchStockCommand}" CommandParameter="5 year">5 year</Button>
                     </StackPanel>
-
-
                 </StackPanel>
+
+                <Border Grid.Row="2" Grid.Column="1" BorderBrush="#FF30305A" BorderThickness="1" Background="#FF09092C" CornerRadius="10" Margin="20 10 20 20" Padding="10">
+                    <StackPanel>
+                        <DockPanel>
+                            <Rectangle Fill="#FFE66216" Height="20" Width="20" Stroke="Black" HorizontalAlignment="Left" Margin="0 0 15 0" />
+                            <TextBlock Foreground="LightBlue" VerticalAlignment="Center" FontSize="24" FontFamily="Roboto">News</TextBlock>
+                        </DockPanel>
+                    </StackPanel>
+                </Border>
 
             </Grid>
         </DockPanel>
